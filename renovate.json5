@@ -26,7 +26,8 @@
       "matchStrings": [
         "images.($name := name; $package := image; versions.{ \"depName\": $name, \"packageName\": $package, \"currentValue\": $string(version), \"currentDigest\": digest })"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "autoReplaceStringTemplate": "{{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}"
     }
   ]
 }
