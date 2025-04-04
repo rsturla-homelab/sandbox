@@ -23,7 +23,7 @@
                 "^image-versions\\.yaml$"
             ],
             "matchStrings": [
-                "name:\\s*(?<depName>\\S+)\\s*image:\\s*(?<packageName>\\S+)\\s*version:\\s*(?<currentValue>\\S+)\\s*digest:\\s*(?<currentDigest>sha256:[a-f0-9]+)"
+                "image:\\s*(?<packageName>\\S+)\\s*version:\\s*(?<currentValue>\\S+)\\s*digest:\\s*(?<currentDigest>sha256:[a-f0-9]+)"
             ],
             "datasourceTemplate": "docker"
         }
