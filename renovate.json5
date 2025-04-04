@@ -1,33 +1,30 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  // Use the basic Renovate preset, and allow settings to be overridden
-  "extends": [
-    "config:best-practices"
-  ],
-  "packageRules": [
-    {
-      // Disable major version updates for Docker images
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "enabled": false
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "jsonata",
-      "fileFormat": "yaml",
-      "fileMatch": [
-        "image-versions.yaml"
-      ],
-      "matchStrings": [
-        "images.($name := name; $package := image; versions.{ \"depName\": $name, \"packageName\": $package, \"currentValue\": $string(version), \"currentDigest\": digest })"
-      ],
-      "datasourceTemplate": "docker",
-      "autoReplaceStringTemplate": "{{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}"
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    // Use the basic Renovate preset, and allow settings to be overridden
+    "extends": [
+        "config:best-practices"
+    ],
+    "packageRules": [
+        {
+            // Disable major version updates for Docker images
+            "matchDatasources": [
+                "docker"
+            ],
+            "matchUpdateTypes": [
+                "major"
+            ],
+            "enabled": false
+        }
+    ],
+    "customManagers": [
+        {
+            "customType": "regex",
+            "fileMatch": ["^image-versions\\.yaml$"],
+            "matchStrings": [
+              "name:\\s*(\\S+)\\s*image:\\s*(\\S+)\\s*version:\\s*(\\S+)\\s*digest:\\s*(sha256:[a-f0-9]+)"
+            ],
+            "datasourceTemplate": "docker",
+            "versioningTemplate": "loose"
+        }
+    ]
 }
