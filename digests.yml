@@ -1,0 +1,6 @@
+images:
+  - name: qemu
+    image: ghcr.io/rsturla-homelab/bootc/qemu/centos-base
+    versions:
+      - version: stream10
+        digest: sha256:0f0af02ffea5ebfea142aefdf8869cc1d0b502ed9f7beacffde132385920b89f

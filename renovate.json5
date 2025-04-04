@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  // Use the basic Renovate preset, and allow settings to be overridden
+  "extends": [
+    "config:best-practices"
+  ],
+  "packageRules": [
+    {
+      // Disable major version updates for Docker images
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "jsonata",
+      "fileFormat": "yaml",
+      "fileMatch": [
+        "image-versions.yaml"
+      ],
+      "matchStrings": [
+        "images.($name := name; $package := image; versions.{ \"depName\": $name, \"packageName\": $package, \"currentValue\": $string(version), \"currentDigest\": digest })"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
+}
