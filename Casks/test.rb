@@ -1,4 +1,4 @@
-# renovate: datasource=github-releases depName=FrameworkComputer/framework-system
+# renovate: datasource=github-releases depName=FrameworkComputer/framework-system extractVersion=(?<version>v(?<version>.*))
 cask "framework-tool" do
   version "0.4.5"
   sha256 "e94af70b2a287577c3d7e26e92e1a3910bd27b725543ac5763b7cd348d8fb57d"
