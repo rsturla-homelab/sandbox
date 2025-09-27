@@ -29,7 +29,7 @@
         },
         {
             "customType": "regex",
-            "managerFilePatterns": ["/^Casks/.*\\.rb$"],
+            "managerFilePatterns": ["^Casks/.*\\.rb$"],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+)\n[\\s\\S]*?version\\s+\"(?<currentValue>[^\"]+)\"(?:[\\s\\S]*?sha256\\s+\"?(?<currentDigest>[a-f0-9]+|:no_check)\"?)?"
             ],
